@@ -1,11 +1,12 @@
+"""This is a docstring which describes the module"""
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Item
 from .forms import ItemForm
 
-# Create your views here.
-
 
 def get_todo_list(request):
+    """This is a docstring which describes the module"""
+    # pylint: disable=no-member
     items = Item.objects.all()
     context = {
         'items': items
@@ -14,6 +15,7 @@ def get_todo_list(request):
 
 
 def add_item(request):
+    """This is a docstring which describes the module"""
     if request.method == 'POST':
         form = ItemForm(request.POST)
         if form.is_valid():
@@ -28,6 +30,7 @@ def add_item(request):
 
 
 def edit_item(request, item_id):
+    """This is a docstring which describes the module"""
     item = get_object_or_404(Item, id=item_id)
     if request.method == 'POST':
         form = ItemForm(request.POST, instance=item)
@@ -42,6 +45,7 @@ def edit_item(request, item_id):
 
 
 def toggle_item(request, item_id):
+    """This is a docstring which describes the module"""
     item = get_object_or_404(Item, id=item_id)
     item.done = not item.done
     item.save()
@@ -49,6 +53,7 @@ def toggle_item(request, item_id):
 
 
 def delete_item(request, item_id):
+    """This is a docstring which describes the module"""
     item = get_object_or_404(Item, id=item_id)
     item.delete()
     return redirect('get_todo_list')
