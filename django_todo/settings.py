@@ -17,7 +17,7 @@ if os.path.exists('env.py'):
 
 from pathlib import Path
 
-development = os.getenv('DEVELOPMENT')
+development = os.environ.get('DEVELOPMENT', False)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
